@@ -2,6 +2,7 @@
     "name": "fabcar",
     "version": "1.0.0",
     "description": "FabCar application implemented in JavaScript",
+    "type": "commonjs",
     "engines": {
         "node": ">=8",
         "npm": ">=5"

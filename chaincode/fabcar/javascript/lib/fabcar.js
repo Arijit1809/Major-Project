@@ -75,11 +75,11 @@ class FabCar extends Contract {
             },
         ];
 
-        for (let i = 0; i < cars.length; i++) {
-            cars[i].docType = 'car';
-            await ctx.stub.putState('CAR' + i, Buffer.from(JSON.stringify(cars[i])));
-            console.info('Added <--> ', cars[i]);
-        }
+        // for (let i = 0; i < cars.length; i++) {
+        //     cars[i].docType = 'car';
+        //     await ctx.stub.putState('CAR' + i, Buffer.from(JSON.stringify(cars[i])));
+        //     console.info('Added <--> ', cars[i]);
+        // }
         console.info('============= END : Initialize Ledger ===========');
     }
 
@@ -104,14 +104,45 @@ class FabCar extends Contract {
         };
 
         await ctx.stub.putState(carNumber, Buffer.from(JSON.stringify(car)));
+        const eventPayload = JSON.stringify({
+            event_type: 'My_event_car_added',
+            car: car
+        });
+        ctx.stub.setEvent('car-added', Buffer.from(eventPayload));
+
         console.info('============= END : Create Car ===========');
+    }
+
+    async queryDocument(ctx, documentId) {
+        // get the document from chaincode state
+        const documentAsBytes = await ctx.stub.getState(documentId);
+        if (!documentAsBytes || documentAsBytes.length === 0) {
+            return {
+                error: true,
+                message: "Document does not exist"
+            }
+        } else {
+            return documentAsBytes.toString();
+        }
+    }
+
+    async createDocument(ctx, documentAsString) {
+        const document = JSON.parse(documentAsString)
+        let status = document.status
+        let docId = document.identifier + document.id + status
+        await ctx.stub.putState(docId, Buffer.from(JSON.stringify(document)));
+        const eventPayload = JSON.stringify({
+            document: document,
+            status: status
+        });
+        ctx.stub.setEvent('Document-added', Buffer.from(eventPayload));
     }
 
     async queryAllCars(ctx) {
         const startKey = '';
         const endKey = '';
         const allResults = [];
-        for await (const {key, value} of ctx.stub.getStateByRange(startKey, endKey)) {
+        for await (const { key, value } of ctx.stub.getStateByRange(startKey, endKey)) {
             const strValue = Buffer.from(value).toString('utf8');
             let record;
             try {

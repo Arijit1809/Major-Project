@@ -1,0 +1,177 @@
+@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800&display=swap');
+
+button {
+  &:hover {
+    cursor: pointer;
+  }
+}
+
+.App {
+  min-height: 100%;
+  width: 100%;
+
+  background-color: #0b0b22;
+  background-image: linear-gradient(315deg, #000034 0%, #095886 74%);
+}
+
+* {
+  font-family: 'Raleway',
+    sans-serif;
+}
+
+.org {
+  &-container {
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    padding: 10px;
+    gap: 10px;
+  }
+
+  padding: 10px;
+  background-color: red;
+  border-radius: 5px;
+  display: flex;
+  flex-direction: column;
+
+  &-0 {
+    background-color: #d0eaffad;
+    background-image: linear-gradient(315deg, #00daff 0%, #73cbff 74%);
+  }
+
+  &-1 {
+    background-color: #F3E6C1;
+  }
+
+  &-2 {
+    background-color: #F7BCC0;
+  }
+
+  &-3 {
+    background-color: #B5C8DF;
+  }
+}
+
+.doc {
+  margin-top: 20px;
+  padding: 10px;
+  border: 1px solid black;
+  background-color: white;
+  border-radius: 5px;
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+
+    >div {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+
+      input {
+        font-size: 1rem;
+        padding: 7px 10px;
+        border-radius: 5px;
+        border: none;
+        background-color: #dbdbdb;
+      }
+    }
+
+    button {
+      margin-top: 5px;
+      font-size: 1rem;
+      padding: 10px 25px;
+      width: fit-content;
+      align-self: center;
+      border-radius: 100vw;
+      border: none;
+      font-weight: 700;
+      color: white;
+      transition: backgound-image 100ms;
+      background-image: linear-gradient(315deg, #1314e9 0%, #1c4fd6 74%);
+
+      &:hover {
+        cursor: pointer;
+        background-image: linear-gradient(315deg, #507df4 0%, #08205d 74%);
+      }
+    }
+  }
+
+  .error {
+    color: red;
+    text-align: center;
+    font-weight: 700;
+    margin-top: 10px;
+  }
+}
+
+.doc-type {
+  margin-bottom: 10px;
+  position: relative;
+  width: fit-content;
+
+  button:hover {
+    cursor: pointer;
+  }
+
+  >button {
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: 2px solid #00300052;
+    background-color: #6bd66b;
+  }
+
+  >div {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    padding: 10px;
+    position: absolute;
+    top: 0px;
+    left: calc(100% + 10px);
+    background-color: #cdf9cd;
+    border: 1px solid black;
+    border-radius: 5px;
+    box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+    >button {
+      padding: 10px 25px;
+      border-radius: 5px;
+      border: 2px solid #00300052;
+      background-color: #6bd66b;
+    }
+  }
+
+  * {
+    font-size: 1rem;
+  }
+}
+
+.prefill {
+  display: flex;
+  flex-direction: row;
+  margin-top: 20px;
+  gap: 10px;
+  padding: 10px;
+  background-color: #e2e0eb;
+  border: 1px solid black;
+  border-radius: 5px;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+
+  button {
+    padding: 10px 25px;
+    border-radius: 5px;
+    border: 2px solid rgb(29 8 85 / 27%);
+    background-color: #ae90ff;
+    font-size: 1rem;
+  }
+}
+
+.table {
+  padding: 10px;
+
+  >div {
+    border-radius: 5px;
+    border: 1px solid black;
+  }
+}
